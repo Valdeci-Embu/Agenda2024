@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-{% load static %}
+
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Base</title>
-    <link rel="stylesheet" href={% static 'global/css/style.css' %}>
+{% include 'global/partials/_head.html' %}
 </head>
 <body>
-<h1>Qualquer Coisa</h1>
+
+{% include 'global/partials/_header.html' %}
+
+<main class="content">
+    {% block content %}
+    {% endblock %}
+    {% include 'global/partials/_pagination.html' %}
+</main>
 </body>
 </html>
