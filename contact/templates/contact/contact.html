@@ -1,7 +1,7 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-    <div class="single_contact">
+    <div class="single-contact">
         <h1 class="single-contact-name">
             {{ contact.first_name }} {{ contact.last_name }}
         </h1>
@@ -11,5 +11,19 @@
         <p><b>Data da criação: </b>{{ contact.created_date }}</p>
         <p><b>Descrição: </b>{{ contact.description }}</p>
         <p><b>Categoria: </b>{{ contact.category.name }}</p>
+
+        <div class="contact-links">
+            <a class="btn btn-link" href="{% url 'contact:update' contact.id %}">Update</a>
+
+            <form action="{% url 'contact:delete' contact.id%}" method="POST">
+                {% csrf_token %}
+                {% if confirmation == 'no' %}
+                    <input type="hidden" name="confirmation" value="yes">
+                    <button class="btn btn-link btn-delete" type="submit" >Confirma?</button>
+                {% else %}
+                    <button class="btn btn-link btn-delete" type="submit" >Delete</button>
+                {% endif %}
+            </form>
+        </div>
     </div>
 {% endblock%}
