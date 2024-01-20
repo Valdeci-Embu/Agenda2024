@@ -9,7 +9,9 @@ class ContactAdmin(admin.ModelAdmin):
     list_filter = ('category', 'created_date')
     list_per_page = 8
     list_max_show_all = 100
-    list_editable = ('show',)
+    list_editable = ('first_name', 'last_name', 'show',)
+    list_display_links = ('id', 'phone',)
+
 
 @admin.register(models.Category)
 class CategoryAdmin(admin.ModelAdmin):
