@@ -58,11 +58,11 @@ class ContactForm(forms.ModelForm):
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(
         required=True,
-        min_length=3,
+        min_length=2,
     )
     last_name = forms.CharField(
         required=True,
-        min_length=3,
+        min_length=2,
     )
     email = forms.EmailField()
 
